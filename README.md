@@ -7,9 +7,15 @@ a lightweight, cloud-native GIS platform.
 
 ```bash
 brew tap opengeos/geolibre
+brew trust --cask opengeos/geolibre/geolibre
 brew install --cask geolibre
 xattr -dr com.apple.quarantine "/Applications/GeoLibre Desktop.app"
 ```
+
+`brew trust` is a one-time approval. Homebrew refuses to load casks from
+non-official taps until trusted (enforced with `HOMEBREW_REQUIRE_TAP_TRUST=1`,
+default in a future release). Use `brew trust opengeos/geolibre` to trust the
+whole tap; the command needs Homebrew 5.1+ and can be skipped on older versions.
 
 The `xattr` step is required. The GeoLibre macOS app is ad-hoc signed but not
 notarized by Apple, so macOS Gatekeeper would otherwise refuse to open it with a
