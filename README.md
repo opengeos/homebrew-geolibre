@@ -7,19 +7,26 @@ a lightweight, cloud-native GIS platform.
 
 ```bash
 brew tap opengeos/geolibre
-brew install --cask --no-quarantine geolibre
+brew install --cask geolibre
+xattr -dr com.apple.quarantine "/Applications/GeoLibre Desktop.app"
 ```
 
-The `--no-quarantine` flag is required. The GeoLibre macOS app is ad-hoc signed
-but not notarized by Apple, so without it macOS Gatekeeper would refuse to open
-the app with a "damaged" prompt. The flag tells Homebrew to skip attaching the
-download quarantine attribute.
+The `xattr` step is required. The GeoLibre macOS app is ad-hoc signed but not
+notarized by Apple, so macOS Gatekeeper would otherwise refuse to open it with a
+"damaged" prompt. The command removes the quarantine attribute Homebrew attaches
+on download. Homebrew removed the `--no-quarantine` flag that previously did this
+in version 5.1, so it now has to be done by hand. The cask also prints this
+reminder as a caveat after install.
 
 ## Upgrade
 
 ```bash
-brew upgrade --cask --no-quarantine geolibre
+brew upgrade --cask geolibre
+xattr -dr com.apple.quarantine "/Applications/GeoLibre Desktop.app"
 ```
+
+Re-run the `xattr` command after each upgrade, since it applies to the freshly
+installed app bundle.
 
 ## Uninstall
 
