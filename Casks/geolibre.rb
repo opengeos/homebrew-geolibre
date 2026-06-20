@@ -1,14 +1,14 @@
 cask "geolibre" do
-  version "1.4.0"
+  version "1.5.0"
 
   on_arm do
-    sha256 "89cabe84819c8949e5545eddc3a4e1bd6dde2d024ad8f05d853a238b8a9306ad"
+    sha256 "e3bc1068d85b5f9f86a26b14c947815cdbbe68bca7d0f266cb0ea0f6556d2a0a"
 
     url "https://github.com/opengeos/GeoLibre/releases/download/v#{version}/GeoLibre.Desktop_#{version}_aarch64.dmg",
         verified: "github.com/opengeos/GeoLibre/"
   end
   on_intel do
-    sha256 "8a8968182e4bcf7cca6caae4f0929386f189628f6905730d56d7533205016b14"
+    sha256 "346fff5e0740d761c15c17e4fec312ac3ab2d7cb293923d3b8b5bc8436326657"
 
     url "https://github.com/opengeos/GeoLibre/releases/download/v#{version}/GeoLibre.Desktop_#{version}_x64.dmg",
         verified: "github.com/opengeos/GeoLibre/"
@@ -19,16 +19,6 @@ cask "geolibre" do
   homepage "https://geolibre.app/"
 
   app "GeoLibre Desktop.app"
-
-  # The DMGs are ad-hoc signed but not notarized by Apple, so macOS Gatekeeper
-  # blocks them with a "damaged" prompt. Homebrew removed the --no-quarantine
-  # flag in 5.1, so the user must strip the quarantine attribute by hand.
-  caveats <<~EOS
-    GeoLibre Desktop is not notarized by Apple. Before first launch, remove the
-    quarantine attribute (repeat this after every upgrade):
-
-      xattr -dr com.apple.quarantine "/Applications/GeoLibre Desktop.app"
-  EOS
 
   zap trash: [
     "~/Library/Application Support/org.geolibre.desktop",
