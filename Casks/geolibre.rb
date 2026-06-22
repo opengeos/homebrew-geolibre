@@ -1,14 +1,14 @@
 cask "geolibre" do
-  version "1.5.0"
+  version "1.6.0"
 
   on_arm do
-    sha256 "e3bc1068d85b5f9f86a26b14c947815cdbbe68bca7d0f266cb0ea0f6556d2a0a"
+    sha256 "513eb81c1eb6973a40ea91dca4b2437affa27f0d021f1f82d4288b3e33d16d04"
 
     url "https://github.com/opengeos/GeoLibre/releases/download/v#{version}/GeoLibre.Desktop_#{version}_aarch64.dmg",
         verified: "github.com/opengeos/GeoLibre/"
   end
   on_intel do
-    sha256 "346fff5e0740d761c15c17e4fec312ac3ab2d7cb293923d3b8b5bc8436326657"
+    sha256 "146e24cff8e44e21f7909aabf53b1efec5f8d01bdd35df089a368c2c105ee2a8"
 
     url "https://github.com/opengeos/GeoLibre/releases/download/v#{version}/GeoLibre.Desktop_#{version}_x64.dmg",
         verified: "github.com/opengeos/GeoLibre/"
